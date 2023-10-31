@@ -2,9 +2,32 @@ from math import floor, sin
 
 
 class MD5HashGenerator:
+    """
+        This class provides a static method for generating MD5 hashes from input data.
+
+        MD5 is a widely used cryptographic hash function that produces a 128-bit (16-byte)
+        hash value from input data. The `get_hash` method of this class calculates the MD5
+        hash of the provided bytes and returns it as a hexadecimal string.
+
+        Attributes:
+            None
+
+        Methods:
+            - get_hash(data: bytes) -> str: Computes the MD5 hash of the input data and
+              returns it as a hexadecimal string.
+    """
 
     @staticmethod
-    def get_hash(string: str) -> str:
+    def get_hash(data: bytes) -> str:
+        """
+            Compute the MD5 hash of the input data.
+
+            Args:
+                data (bytes): The input data for which the MD5 hash is calculated.
+
+            Returns:
+                str: The MD5 hash of the input data represented as a hexadecimal string.
+        """
 
         # Step 0
         buffer = {
@@ -14,7 +37,7 @@ class MD5HashGenerator:
             "D": 0x10325476
         }
         buffer_previous = buffer.copy()
-        byte_string = bytearray(string.encode("utf-8"))
+        byte_string = bytearray(data)
 
         # Step 1
         byte_string.append(0x80)
@@ -23,7 +46,7 @@ class MD5HashGenerator:
             byte_string.append(0x00)
 
         # Step 2
-        length = (len(string) * 8) % (2 ** 64)
+        length = (len(data) * 8) % (2 ** 64)
         byte_string.extend(length.to_bytes(length=8, byteorder='little'))
 
         # Step 3

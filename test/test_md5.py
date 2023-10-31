@@ -19,4 +19,4 @@ class TestMD5(unittest.TestCase):
 
         for string, hash_result in expectations.items():
             with self.subTest(string=string, hash_result=hash_result):
-                self.assertEqual(MD5HashGenerator.get_hash(string), hash_result)
+                self.assertEqual(MD5HashGenerator.get_hash(string.encode("utf-8")), hash_result)
