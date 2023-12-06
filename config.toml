@@ -1,0 +1,23 @@
+[file]
+max_file_size = 5242880
+
+[random_numbers]
+m = 536870911
+a = 4096
+c = 6567
+x = 23
+n = 50
+
+[hash]
+data_to_hash = ["Hello, world Config", ]
+
+[encryption]
+w = 64
+r = 20
+b = 16
+
+[rsa_encryption]
+data_to_encrypt = "Hello, world"
+
+[dsa_sign]
+data_to_sign = "Hello, world"
